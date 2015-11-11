@@ -10,6 +10,7 @@ module.exports.create = createUser;
 module.exports.findById = findUserById;
 module.exports.findByEmail = findUserByEmail;
 module.exports.getAll = getAllUsers;
+module.exports.verify = verifyUser;
 
 /**
  *  Create a new user
@@ -120,5 +121,38 @@ function getAllUsers(limit, offset, callback) {
     }
 
     return callback(null, rows);
+  });
+}
+
+/**
+ *  Check if user has valid credentials
+ *
+ *  @param {String} email
+ *  @param {String} password
+ *  @param {Function} callback
+ */
+function verifyUser(email, password, callback) {
+  findUserByEmail(email, function(err, user) {
+    if (err) {
+      return callback(err);
+    }
+
+    // check password againts stored hash&salt combo
+    passwordHelper.verify(password, user.password, user.salt, function(err, result) {
+      if (err) {
+        return callback(err);
+      }
+
+      // if password does not match don't return user
+      if (result === false) {
+        return callback(err, null);
+      }
+
+      // remove password and salt from the result
+      delete user.password;
+      delete user.salt;
+      // return user if everything is ok
+      callback(null, user);
+    });
   });
 }

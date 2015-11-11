@@ -23,6 +23,19 @@ function initialize(quark) {
 
   quark.define({
     entity: 'user',
+    action: 'verify'
+  }, function(args, callback) {
+    User.verify(args.data.email, args.data.password, function(err, user) {
+      if (err) {
+        return callback(err);
+      }
+
+      callback(null, user);
+    });
+  });
+
+  quark.define({
+    entity: 'user',
     action: 'find_by_email'
   }, function(args, callback) {
     User.findByEmail(args.data.email, function(err, user) {

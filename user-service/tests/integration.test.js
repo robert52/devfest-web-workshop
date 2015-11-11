@@ -114,4 +114,26 @@ describe('entity:user', function() {
     });
   });
 
+  describe('action:verify', function() {
+    it('should check user credentials', function(done) {
+      app.exec({
+        entity: 'user',
+        action: 'verify',
+        data: {
+          email: 'john.doe@test.com',
+          password: 'pass1234'
+        }
+      }, function(err, user) {
+        if (err) throw err;
+
+        should.exist(user.id);
+        should.not.exist(user.password);
+        should.not.exist(user.salt);
+        user.name.should.equal('John Doe');
+        user.email.should.equal('john.doe@test.com');
+        done();
+      });
+    });
+  });
+
 });

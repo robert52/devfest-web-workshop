@@ -33,3 +33,6 @@ config/environments/*
 
 # project build folder
 build
+
+# ignore db files
+db/*.sqlite
