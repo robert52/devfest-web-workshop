@@ -1,0 +1,27 @@
+{
+  "name": "user-service",
+  "version": "0.0.9",
+  "description": "A simple user micro-service.",
+  "main": "index.js",
+  "repository": "git@github.com:robert52/devfest-workshop.git",
+  "author": "Robert Onodi <robert.onodi89+github@gmail.com>",
+  "contributors": [
+    "Robert Onodi <robert.onodi89+github@gmail.com>",
+    "Paul Brie <paul.brie+github@gmail.com>"
+  ],
+  "dependencies": {
+    "async": "^1.5.0",
+    "knex": "^0.9.0",
+    "lodash": "^3.10.1",
+    "quark": "^1.0.1",
+    "sqlite3": "^3.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-things": "^0.2.0",
+    "mocha": "^2.3.3"
+  },
+  "engines": {
+    "node": ">= 0.12.7"
+  }
+}

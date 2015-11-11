@@ -1,0 +1,32 @@
+<form name="vm.RegisterForm" class="form-small">
+  <h2>Register</h2>
+  <div>{{ vm.errorMessage }}</div>
+  <div class="form-group" ng-class="{ 'has-error': vm.RegisterForm.name.$touched && vm.RegisterForm.name.$invalid }">
+    <input type="text" name="name" class="form-control" ng-model="vm.user.name" placeholder="Full name" required>
+    <div class="help-block"
+    ng-messages="vm.RegisterForm.name.$error"
+    ng-if="vm.RegisterForm.name.$touched">
+        <p ng-message="required">Name is required.</p>
+    </div>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error': vm.RegisterForm.email.$touched && vm.RegisterForm.email.$invalid }">
+    <input type="email" name="email" class="form-control" ng-model="vm.user.email" placeholder="Email" required>
+    <div class="help-block"
+    ng-messages="vm.RegisterForm.email.$error"
+    ng-if="vm.RegisterForm.email.$touched">
+        <p ng-message="required">E-mail is required.</p>
+        <p ng-message="email">Must be a valid e-mail.</p>
+        <p ng-message="unique">E-mail is already used.</p>
+    </div>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error': vm.RegisterForm.password.$touched && vm.RegisterForm.password.$invalid }">
+    <input type="password" name="password" class="form-control" ng-model="vm.user.password" placeholder="Password" required>
+    <div class="help-block"
+    ng-messages="vm.RegisterForm.password.$error"
+    ng-if="vm.RegisterForm.password.$touched">
+        <p ng-message="required">Password is required.</p>
+    </div>
+  </div>
+
+  <button class="btn btn-success btn-block" type="submit" ng-disabled="vm.RegisterForm.$invalid" ng-click="vm.registerUser()">Register</button>
+</form>

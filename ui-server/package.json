@@ -1,0 +1,25 @@
+{
+  "name": "ui-server",
+  "version": "0.0.9",
+  "description": "Simple UI server that will server public files.",
+  "main": "server.js",
+  "repository": "git@github.com:robert52/devfest-workshop.git",
+  "author": "Robert Onodi <robert.onodi89+github@gmail.com>",
+  "contributors": [
+    "Robert Onodi <robert.onodi89+github@gmail.com>",
+    "Paul Brie <paul.brie+github@gmail.com>"
+  ],
+  "dependencies": {
+    "async": "^1.5.0",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "lodash": "^3.10.1",
+    "method-override": "^2.3.5",
+    "quark": "^1.0.1",
+    "serve-static": "^1.10.0"
+  },
+  "engines": {
+    "node": ">= 0.12.7"
+  }
+}

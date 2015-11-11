@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-messages": "^1.4.7",
+    "angular-route": "^1.4.7",
+    "angular-ui-bootstrap": "^0.13.4",
+    "bootstrap": "^3.3.5"
+  },
+  "devDependencies": {}
+}

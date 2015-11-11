@@ -1,0 +1,23 @@
+<form name="vm.SigninForm" class="form-small">
+  <h2>Sign in</h2>
+  <div>{{ vm.errorMessage }}</div>
+  <div class="form-group" ng-class="{ 'has-error': vm.SigninForm.email.$touched && vm.SigninForm.email.$invalid }">
+    <input type="email" name="email" class="form-control" ng-model="vm.user.email" placeholder="Email" required>
+    <div class="help-block"
+    ng-messages="vm.SigninForm.email.$error"
+    ng-if="vm.SigninForm.email.$touched">
+        <p ng-message="required">E-mail is required.</p>
+        <p ng-message="email">Must be a valid e-mail.</p>
+    </div>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error': vm.SigninForm.password.$touched && vm.SigninForm.password.$invalid }">
+    <input type="password" name="password" class="form-control" ng-model="vm.user.password" placeholder="Password" required>
+    <div class="help-block"
+    ng-messages="vm.SigninForm.password.$error"
+    ng-if="vm.SigninForm.password.$touched">
+        <p ng-message="required">Password is required.</p>
+    </div>
+  </div>
+
+  <button class="btn btn-success btn-block" type="submit" ng-disabled="vm.SigninForm.$invalid" ng-click="vm.signinUser()">Sign in</button>
+</form>
