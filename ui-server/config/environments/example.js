@@ -6,12 +6,6 @@ module.exports = {
   app: {
     name: "ui server"
   },
-  services: {
-    auth: {
-      port: 3032,
-      hostname: '127.0.0.1'
-    }
-  },
   proxy: {
     trust: true
   },
