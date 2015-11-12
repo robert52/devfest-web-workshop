@@ -23,9 +23,22 @@ describe('entity:auth', function() {
       action: 'verify'
     }, function(args, callback) {
       // generate random id
-      args.id = Date.now;
+      callback(null, {
+        name: args.data.name,
+        email: args.data.email,
+        id: Date.now()+''
+      });
+    });
 
-      callback(null, args);
+    app.define({
+      entity: 'user',
+      action: 'find_by_id'
+    }, function(args, callback) {
+      // generate random id
+      callback(null, {
+        email: 'john.doe@test.com',
+        id: args.data.id
+      });
     });
 
     app.listen({ port: config.port, hostname: config.hostname }, function(err, addr) {
@@ -61,7 +74,6 @@ describe('entity:auth', function() {
         should.exist(user.token);
         should.not.exist(user.password);
         should.not.exist(user.salt);
-        user.name.should.equal('John Doe');
         user.email.should.equal('john.doe@test.com');
 
         _user = user;
@@ -85,7 +97,6 @@ describe('entity:auth', function() {
         should.not.exist(user.password);
         should.not.exist(user.salt);
         user.id.should.equal(_user.id);
-        user.name.should.equal(_user.name);
         user.email.should.equal(_user.email);
 
         done();
