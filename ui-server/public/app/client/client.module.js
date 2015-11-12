@@ -1,1 +1,7 @@
-// TODO: define client module
+(function() {
+  'use strict';
+
+  angular
+  .module('client', []);
+
+}());

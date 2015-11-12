@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-  .module('erp', ['ngRoute', 'ui.bootstrap', 'ngMessages', 'auth', 'common']);
+  .module('erp', ['ngRoute', 'ui.bootstrap', 'ngMessages', 'xeditable', 'auth', 'common', 'client']);
 
 }());
