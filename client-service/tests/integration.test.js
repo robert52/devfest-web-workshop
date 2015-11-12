@@ -45,7 +45,7 @@ describe('entity:client', function() {
       }, function(err, client) {
         if (err) throw err;
 
-        should.exist(user.id);
+        should.exist(client.id);
         client.name.should.equal('John Doe');
         client.email.should.equal('john.doe@test.com');
 
@@ -62,7 +62,7 @@ describe('entity:client', function() {
         entity: 'client',
         action: 'find_by_id',
         data: {
-          id: _user.id
+          id: _client.id
         }
       }, function(err, client) {
         if (err) throw err;
