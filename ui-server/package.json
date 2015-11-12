@@ -10,11 +10,8 @@
     "Paul Brie <paul.brie+github@gmail.com>"
   ],
   "dependencies": {
-    "async": "^1.5.0",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
-    "express-session": "^1.12.1",
-    "lodash": "^3.10.1",
     "method-override": "^2.3.5",
     "quark": "^1.0.1",
     "serve-static": "^1.10.0"
