@@ -8,7 +8,7 @@ module.exports = {
   },
   services: {
     user: {
-      port: 3031,
+      port: 3030,
       hostname: '127.0.0.1'
     },
     client: {
