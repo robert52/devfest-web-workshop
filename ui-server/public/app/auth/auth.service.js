@@ -5,10 +5,10 @@
   .module('auth')
   .factory('Auth', Auth);
 
-  Auth.$inject = ['$http', '$window', '$location'];
+  Auth.$inject = ['$http', '$window', '$location', 'config'];
 
-  function Auth($http, $window, $location) {
-    var serviceBase = 'http://localhost:3030/api';
+  function Auth($http, $window, $location, config) {
+    var serviceBase = config.api.url+'/api';
     var factory = {
       initialize: initialize,
       register: registerUser,
@@ -39,16 +39,9 @@
     }
 
     function signinUser(user) {
-      var request = {
-        url: serviceBase + '/auth',
-        method: "POST",
-        headers: {
-          Authorization: 'Basic ' + btoa(user.email + ':' + user.password)
-        }
-      };
-
-      return $http(request)
-      .then(function(response) {
+      return $http
+      .post(serviceBase + '/auth', user)
+      .then(function(result) {
         setCurrentUser(response.data);
 
         return response.data;
@@ -67,16 +60,15 @@
       initialize();
     }
 
-    function getAuthUser() {
-      return $http
-      .get(serviceBase + '/auth')
-      .then(function(response) {
-        return response.data;
-      });
-    }
-
     function getCurrentUser() {
-      var user = JSON.parse($window.sessionStorage.user || null);
+      //var user = JSON.parse($window.sessionStorage.user || null);
+
+      // TODO: remove mock user
+      var user = {
+        name: 'Bruce Wayne',
+        email: 'bruce@wayneindustries.com'
+      };
+
       return user;
     }
 

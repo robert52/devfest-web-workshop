@@ -1,0 +1,57 @@
+<section class="clients">
+  <div class="container">
+    <div class="row clients-list">
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">Add new client:</div>
+          <form novalidate>
+            <div class="panel-body">
+              <div class="form-group">
+                <input type="text" class="form-control" id="new-client-name" placeholder="Jane Doe" ng-model="vm.newclient.name">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="new-client-email" placeholder="jane.doe@example.com" ng-model="vm.newclient.email">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="new-client-company" placeholder="Company" ng-model="vm.newclient.company">
+              </div>
+              <div class="form-group">
+                <input type="phone" class="form-control" id="new-client-phone" placeholder="+00 0000 000 000" ng-model="vm.newclient.phoneNumber">
+              </div>
+            </div>
+            <div class="panel-footer">
+                <button type="submit" class="btn btn-success btn-xs" ng-click="vm.addclient(vm.newclient)">save client</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-3" ng-repeat="client in vm.clients">
+        <div class="panel panel-default">
+          <div class="panel-heading">&nbsp;</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <span editable-text="client.name" e-name="name" e-form="clientEditForm">Name: {{ client.name }}</span>
+            </div>
+            <div class="form-group">
+              <span editable-text="client.email" e-name="email" e-form="clientEditForm">{{ client.email }}</span>
+            </div>
+            <div class="form-group">
+              <span editable-text="client.phone" e-name="phone" e-form="clientEditForm">{{ client.phone }}</span>
+            </div>
+            <div class="form-group">
+              <span editable-text="client.company" e-name="company" e-form="clientEditForm">{{ client.company }}</span>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <form editable-form name="clientEditForm" ng-show="clientEditForm.$visible" onbeforesave="vm.saveclient($data, client._id)">
+              <button class="btn btn-success btn-xs" type="submit" ng-disabled="clientEditForm.$waiting">save</button>
+              <button class="btn btn-default btn-xs" type="button" ng-disabled="clientEditForm.$waiting" ng-click="clientEditForm.$cancel()">cancel</button>
+            </form>
+            <button class="btn btn-default btn-xs" type="submit" ng-show="!clientEditForm.$visible" ng-click="clientEditForm.$show()">edit</button>
+            <button class="btn btn-danger btn-xs" type="button" ng-show="!clientEditForm.$visible" ng-click="vm.deleteclient(client._id)">delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

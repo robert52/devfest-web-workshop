@@ -17,8 +17,6 @@ app.set('env', ENV);
 // Initialize every config
 require('./config/express').init(app);
 
-//app.use('/', require('./app/routes/main'));
-
 // Set global error handler
 app.use(function(err, req, res, next) {
   res.status(500).json(err);
