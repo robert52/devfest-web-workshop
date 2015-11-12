@@ -15,7 +15,7 @@ knex
 .schema.createTableIfNotExists('tokens', function (table) {
   table.increments();
   table.string('user_id');
-  table.string('value');
+  table.string('hash');
   table.timestamps();
 })
 // Then exit migration
