@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = {
-  name: 'user-service',
+  name: 'client-service',
   port: 3031,
   hostname: '127.0.0.1',
   db: {
     client: 'sqlite3',
     connection: {
-      filename: "./db/user_service_db.sqlite"
+      filename: "./db/client_service_db.sqlite"
     }
   }
 };
