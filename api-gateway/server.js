@@ -18,6 +18,7 @@ app.set('env', ENV);
 require('./config/express').init(app);
 
 app.use('/api', require('./app/routes/users'));
+app.use('/api', require('./app/routes/authentication'));
 
 // Set global error handler
 app.use(function(err, req, res, next) {
