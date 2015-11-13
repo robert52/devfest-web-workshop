@@ -31,6 +31,13 @@ client-service/   <-- Client micro-service Not implemented
 ui-server/        <-- Static file serving, mainly the Angular app
 user-service/     <-- Base micro-service that stores data
 ```
+# TODO
+
+- [ ] Implement client service functionalities
+- [ ] Implement Angular client module on UI server
+- [ ] Create auth service
+- [ ] Add authentication middleware to API gateway
+
 
 # Speakers
 
